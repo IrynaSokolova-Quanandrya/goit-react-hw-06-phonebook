@@ -60,10 +60,7 @@ function Phonebook() {
       <ContactForm />
       <h2 className={s.title}>Contacts</h2>
       {/* <Filter value={filter} onChange={changeFilter} /> */}
-      {/* <ContactList
-        contacts={getFilterSearch()}
-        onDeleteContact={deleteContact}
-      /> */}
+      <ContactList />
     </div>
   );
 }

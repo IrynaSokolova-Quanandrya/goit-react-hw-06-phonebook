@@ -1,7 +1,7 @@
 /** @format */
 
 import { useState } from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import s from "../styles/form.module.css";
 import style from "../styles/button.module.css";
 import Input from "../components/Input";
