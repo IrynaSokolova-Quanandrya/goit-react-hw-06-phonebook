@@ -30,9 +30,25 @@ function ContactList({ contacts, onDeleteContact }) {
 //   contacts: PropTypes.object.isRequired,
 //   onDeleteContact: PropTypes.func.isRequired,
 // };
-const mapStateToProps = (state) => ({
-  contacts: state.phonebook.contacts,
-});
+// const getFilterSearch = () => {
+//   const normalizedFilter = filter.toLowerCase();
+
+//   return contacts.filter((contact) =>
+//     contact.name.toLowerCase().includes(normalizedFilter)
+//   );
+// };
+
+const mapStateToProps = (state) => {
+  const { contacts, filter } = state.phonebook;
+  const normalizedFilter = filter.toLowerCase();
+  const visibleContacts = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(normalizedFilter)
+  );
+
+  return {
+    contacts: visibleContacts,
+  };
+};
 const mapDispatchToProps = (dispatch) => ({
   onDeleteContact: (id) => dispatch(phonebookActions.deleteContact(id)),
 });
