@@ -1,6 +1,7 @@
 /** @format */
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 // import PropTypes from "prop-types";
 import s from "../styles/form.module.css";
 import style from "../styles/button.module.css";
@@ -9,10 +10,11 @@ import { nanoid } from "nanoid";
 import { connect } from "react-redux";
 import phonebookActions from "../redax/actions";
 
-function ContactForm({ onSubmit }) {
+export default function ContactForm() {
   const inputId = nanoid();
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const dispatch = useDispatch();
 
   const handleChange = ({ name, value }) => {
     switch (name) {
@@ -28,7 +30,8 @@ function ContactForm({ onSubmit }) {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit({ name, number });
+    dispatch(phonebookActions.addContact({ name, number }));
+    // onSubmit({ name, number });
     reset();
   };
   const reset = () => {
@@ -71,8 +74,8 @@ function ContactForm({ onSubmit }) {
 //   onSubmit: PropTypes.func.isRequired,
 // };
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit: ({ name, number }) =>
-    dispatch(phonebookActions.addContact({ name, number })),
-});
-export default connect(null, mapDispatchToProps)(ContactForm);
+// const mapDispatchToProps = (dispatch) => ({
+//   onSubmit: ({ name, number }) =>
+//     dispatch(phonebookActions.addContact({ name, number })),
+// });
+// export default connect(null, mapDispatchToProps)(ContactForm);
