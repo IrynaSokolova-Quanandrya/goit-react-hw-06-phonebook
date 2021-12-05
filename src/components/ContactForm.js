@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+// import {getContacts} from '../redax/selectors';
 // import PropTypes from "prop-types";
 import s from "../styles/form.module.css";
 import style from "../styles/button.module.css";
 import Input from "../components/Input";
 import { nanoid } from "nanoid";
-import { connect } from "react-redux";
 import phonebookActions from "../redax/actions";
 
 export default function ContactForm() {
@@ -28,10 +28,10 @@ export default function ContactForm() {
         return;
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(phonebookActions.addContact({ name, number }));
-    // onSubmit({ name, number });
     reset();
   };
   const reset = () => {
@@ -73,9 +73,3 @@ export default function ContactForm() {
 // ContactForm.propTypes = {
 //   onSubmit: PropTypes.func.isRequired,
 // };
-
-// const mapDispatchToProps = (dispatch) => ({
-//   onSubmit: ({ name, number }) =>
-//     dispatch(phonebookActions.addContact({ name, number })),
-// });
-// export default connect(null, mapDispatchToProps)(ContactForm);
