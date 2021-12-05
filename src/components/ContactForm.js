@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+// import {getContacts} from '../redax/selectors';
 import s from "../styles/form.module.css";
 import styles from "../styles/input.module.css";
 import style from "../styles/button.module.css";
+// import Input from "../components/Input";
 import { nanoid } from "nanoid";
 import phonebookActions from "../redax/actions";
 
@@ -14,7 +16,15 @@ export default function ContactForm() {
   const [number, setNumber] = useState("");
   const dispatch = useDispatch();
 
-  const handleChange = ({ name, value }) => {
+  // const handleChange = (e) => {
+  //       const { name, value } = e.target;
+  //       dispatch(phonebookActions.getFilter({ value, name }))
+  //       // onChange({ value, name });
+  //     };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    // dispatch(phonebookActions.getContacts(e.target.value))
     switch (name) {
       case "name":
         setName(value);
