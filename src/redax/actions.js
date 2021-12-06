@@ -11,6 +11,11 @@ const addContact = createAction("contact/Add", (number, name) => ({
 
 const deleteContact = createAction("contact/Delete");
 
-const getFilter = createAction("contact/getFilter");
+const changeFilter = createAction("contact/changeFilter");
 
-export default { addContact, deleteContact, getFilter };
+const phonebookActions = {
+  addContact,
+  deleteContact,
+  changeFilter,
+};
+export default phonebookActions;
