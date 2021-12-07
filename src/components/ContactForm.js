@@ -1,27 +1,47 @@
 /** @format */
-
+import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getContacts } from "../redax/selectors";
+import phonebookActions from "../redax/actions";
 import s from "../styles/form.module.css";
 import styles from "../styles/input.module.css";
 import style from "../styles/button.module.css";
-import { nanoid } from "nanoid";
-import phonebookActions from "../redax/actions";
 
 export default function ContactForm() {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-
+  console.log(number);
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
+  //  const handleChange = ({ name, value }) => {
+  //   switch (name) {
+  //     case "name":
+  //       setName(value);
+  //       break;
+  //     case "number":
+  //       setNumber(value);
+  //       break;
+  //     default:
+  //       return;
+  //   }
+  // };
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log({ name, value });
     name === "name" ? setName(value) : setNumber(value);
+
+    // if (e.currentTarget.name === "name") {
+    //   setName(e.currentTarget.value);
+    // }
+    // if (e.currentTarget.name === "number") {
+    //   setNumber(e.currentTarget.value);
+    // }
   };
 
   const handleSubmit = (e) => {
+    console.log(e);
     e.preventDefault();
     if (contacts.find((contact) => contact.name === name)) {
       alert(`${name} is already in contacts`);
@@ -36,26 +56,24 @@ export default function ContactForm() {
   };
   return (
     <form className={s.form} onSubmit={handleSubmit}>
-      <label className={styles.label} htmlFor={nanoid()}>
+      <label className={styles.label}>
         Name
         <input
           value={name}
-          onChange={handleChange}
+          onChange={handleChange()}
           type="text"
-          id={nanoid()}
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
           required
         />
       </label>
-      <label className={styles.label} htmlFor={nanoid()}>
+      <label className={styles.label}>
         Number
         <input
           value={number}
-          onChange={handleChange}
+          onChange={handleChange()}
           type="tel"
-          id={nanoid()}
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"

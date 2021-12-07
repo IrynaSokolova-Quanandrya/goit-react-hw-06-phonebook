@@ -19,7 +19,7 @@ export default function ContactList() {
           <button
             type="button"
             className={styles.btn}
-            onDelete={() => dispatch(phonebookActions.deleteContact(id))}
+            onClick={() => dispatch(phonebookActions.deleteContact(id))}
           >
             Delete
           </button>

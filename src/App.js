@@ -1,4 +1,5 @@
 /** @format */
+import React from "react";
 import s from "./App.module.css";
 import ContactForm from "./components/ContactForm";
 import ContactList from "./components/ContactList";
