@@ -1,14 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 import { nanoid } from "nanoid";
 
-// const addContact = createAction("contact/Add", (name, number) => ({
-//   payload: {
-//     id: nanoid(),
-//     name,
-//     number,
-//   },
-// }));
-
 const addContact = createAction("contacts/add", (contact) => ({
   payload: {
     contact: {

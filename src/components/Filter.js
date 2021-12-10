@@ -1,8 +1,8 @@
 /** @format */
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getFilter } from "../redax/selectors";
-import phonebookActions from "../redax/actions";
+import { getFilter } from "../redux/selectors";
+import phonebookActions from "../redux/actions";
 import PropTypes from "prop-types";
 import s from "../styles/input.module.css";
 

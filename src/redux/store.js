@@ -5,7 +5,7 @@ import {
 } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import logger from "redux-logger";
-import phonebookReducer from "./reduser";
+import phonebookReducer from "./reducer";
 import {
   persistStore,
   persistReducer,

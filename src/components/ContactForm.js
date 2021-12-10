@@ -2,8 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getContacts } from "../redax/selectors";
-import phonebookActions from "../redax/actions";
+import { getContacts } from "../redux/selectors";
+import phonebookActions from "../redux/actions";
 import s from "../styles/form.module.css";
 import styles from "../styles/input.module.css";
 import style from "../styles/button.module.css";
